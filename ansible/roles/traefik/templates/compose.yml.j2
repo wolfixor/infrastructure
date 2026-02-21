@@ -1,0 +1,41 @@
+version: '3.8'
+
+networks:
+  web_net:
+    name: web_net
+    external: true
+  app_net:
+    name: app_net
+    external: true
+
+services:
+  traefik:
+    image: traefik:v3.6.7
+    container_name: traefik
+    restart: always
+    command:
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.http.address=:80
+      - --entrypoints.https.address=:443
+      - --certificatesresolvers.mycert.acme.email={{ traefik_email }}
+      - --certificatesresolvers.mycert.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.mycert.acme.httpchallenge.entrypoint=http
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik_certs:/letsencrypt
+    networks:
+      - web_net
+      - app_net
+    labels:
+      - traefik.enable=true
+      - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
+
+volumes:
+  traefik_certs:
+    name: traefik_certs

@@ -1,0 +1,5 @@
+# Vault variables (unencrypted for now)
+# Add your sensitive variables here
+# Example:
+# database_password: "your_password"
+# api_key: "your_api_key"

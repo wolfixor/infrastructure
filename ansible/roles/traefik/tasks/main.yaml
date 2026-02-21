@@ -1,0 +1,29 @@
+---
+- name: Install Python Docker SDK
+  apt:
+    name: python3-docker
+    state: present
+
+- name: Create traefik directory
+  file:
+    path: /opt/traefik
+    state: directory
+    mode: '0755'
+
+- name: Create docker networks
+  command: docker network create {{ item }}
+  loop:
+    - web_net
+    - app_net
+  ignore_errors: yes
+
+- name: Deploy traefik compose file
+  template:
+    src: compose.yml.j2
+    dest: /opt/traefik/compose.yml
+    mode: '0644'
+
+- name: Start traefik
+  command: docker compose up -d
+  args:
+    chdir: /opt/traefik

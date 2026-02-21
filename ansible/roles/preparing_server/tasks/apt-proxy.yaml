@@ -1,0 +1,41 @@
+---
+# - name: Remove entire sources.list.d directory
+#   file:
+#     path: /etc/apt/sources.list.d
+#     state: absent
+#   when: nexus_repo_url is defined
+
+# - name: Create sources.list.d directory
+#   file:
+#     path: /etc/apt/sources.list.d
+#     state: directory
+#     mode: '0755'
+#   when: nexus_repo_url is defined
+
+# - name: Create default Nexus sources file
+#   template:
+#     src: nexus-consolidated.list.j2
+#     dest: /etc/apt/sources.list.d/default.list
+#     mode: '0644'
+#   when: nexus_repo_url is defined
+
+# - name: Create security Nexus sources file
+#   template:
+#     src: nexus-security.list.j2
+#     dest: /etc/apt/sources.list.d/security.list
+#     mode: '0644'
+#   when: nexus_security_url is defined
+
+# - name: Create docker Nexus sources file
+#   template:
+#     src: nexus-docker.list.j2
+#     dest: /etc/apt/sources.list.d/docker.list
+#     mode: '0644'
+#   when: nexus_docker_url is defined
+
+# - name: Create kubernetes sources file
+#   template:
+#     src: nexus-kubernetes.list.j2
+#     dest: /etc/apt/sources.list.d/kubernetes.list
+#     mode: '0644'
+#   when: nexus_kubernetes_url is defined

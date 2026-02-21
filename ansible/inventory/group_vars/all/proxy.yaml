@@ -1,0 +1,9 @@
+# setup http proxy configuration
+# proxy_env:
+#   http_proxy: http://salam:salam@130.185.121.18:6789
+#   https_proxy: "{{ http_proxy }}"
+# nexus_repo_url: "https://repo.wolfixor.shop/repository/apt-proxy-debian-12"
+# nexus_security_url: "https://repo.wolfixor.shop/repository/security-apt-proxy"
+# nexus_docker_url: "https://repo.wolfixor.shop/repository/docker"
+# nexus_kubernetes_url: "https://repo.wolfixor.shop/repository/kubernetes-debian"
+

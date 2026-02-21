@@ -1,0 +1,44 @@
+all:
+  children:
+    repo-servers:
+      hosts:
+        repo-server:
+          ansible_host: 185.204.170.125
+          ansible_user: root
+          ansible_port: 22
+          ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+          ansible_connection: ssh
+          server_hostname: repo-server
+        iran-gitlab:
+          ansible_host: 94.101.180.133
+          ansible_user: root
+          ansible_port: 22
+          ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+          ansible_connection: ssh
+          server_hostname: iran-gitlab
+        development-server:
+          ansible_host: 185.206.93.111
+          ansible_user: root
+          ansible_port: 22
+          ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+          ansible_connection: ssh
+          server_hostname: development-server
+        staging-server:
+          ansible_host: 37.32.9.59
+          ansible_user: root
+          ansible_port: 22
+          ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+          ansible_connection: ssh
+          server_hostname: staging-server
+        production-server:
+          ansible_host: 37.32.8.248
+          ansible_user: root
+          ansible_port: 22
+          ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+          ansible_connection: ssh
+          server_hostname: production-server
