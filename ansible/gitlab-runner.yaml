@@ -1,0 +1,7 @@
+---
+- hosts: repo-servers
+  become: true
+  gather_facts: yes
+  name: Deploy GitLab Runner
+  roles:
+    - { role: gitlab-runner, become: True, tags: gitlab_runner }

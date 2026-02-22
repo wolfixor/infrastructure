@@ -1,0 +1,12 @@
+---
+# GitLab Configuration
+gitlab_base_domain: wolfixsite.shop
+gitlab_subdomain: git
+gitlab_registry_subdomain: reg
+gitlab_domain: "{{ gitlab_subdomain }}.{{ gitlab_base_domain }}"
+
+# GitLab image tag
+gitlab_image_tag: 18.8.3-ce.0
+
+# GitLab root password
+gitlab_root_password: nasernaser

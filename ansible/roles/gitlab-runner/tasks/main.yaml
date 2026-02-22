@@ -1,0 +1,24 @@
+---
+- name: Create gitlab-runner directory
+  file:
+    path: /opt/gitlab-runner
+    state: directory
+    mode: '0755'
+
+- name: Create docker networks
+  command: docker network create {{ item }}
+  loop:
+    - web_net
+    - app_net
+  ignore_errors: yes
+
+- name: Deploy gitlab-runner compose file
+  template:
+    src: compose.yml.j2
+    dest: /opt/gitlab-runner/compose.yml
+    mode: '0644'
+
+- name: Start gitlab-runner
+  command: docker compose up -d
+  args:
+    chdir: /opt/gitlab-runner

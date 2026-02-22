@@ -1,0 +1,3 @@
+---
+# GitLab Runner Configuration
+gitlab_runner_version: v18.6.6

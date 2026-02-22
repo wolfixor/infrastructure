@@ -38,6 +38,18 @@ ansible-playbook -i inventory/host.yaml preparing.yaml --tags traefik --limit de
 run think for limit server
 ansible-playbook -i inventory/host.yaml preparing.yaml --tags preparing_server --limit development-server,staging-server,production-server
 
+
+# Deploy to specific server gitlab
+ansible-playbook -i inventory/host.yaml gitlab.yaml --limit iran-gitlab
+
+# Or deploy to multiple servers gitlab
+ansible-playbook -i inventory/host.yaml gitlab.yaml --limit development-server,staging-server
+
+# gitlab runner
+ansible-playbook -i inventory/host.yaml gitlab-runner.yaml --limit development-server
+
+
+
 ansible-playbook -i inventory/host.yaml preparing.yaml --tags docker_setup --limit development-server,staging-server,production-server
 
 
